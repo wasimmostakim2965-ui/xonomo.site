@@ -1,0 +1,44 @@
+# Tests
+
+## Test 1 - Single-link professional flow [sanity]
+Viewport: desktop
+Description: Verifies the single-link workflow and three download choices.
+Covers: single URL input, valid TikTok processing, download options
+Steps:
+1. Paste "https://www.tiktok.com/@example/video/1234567890" into the URL field
+2. Submit the form
+Expected: The backend resolves direct media URLs and the result card appears with three options: Without Watermark HD, Without Watermark 720p, and Audio Only.
+
+## Test 2 - Paste triggers processing
+Viewport: mobile
+Description: Verifies pasting a valid TikTok URL starts processing automatically.
+Covers: paste interaction, automatic processing
+Steps:
+1. Paste "https://www.tiktok.com/@example/video/1234567890" into the URL field
+Expected: Processing begins automatically and download options appear after success.
+
+## Test 3 - Invalid link
+Viewport: desktop
+Description: Verifies invalid URLs are rejected.
+Covers: URL validation
+Steps:
+1. Paste "https://example.com/video.mp4"
+2. Submit
+Expected: A visible invalid-link error appears and no options are shown.
+
+## Test 4 - Direct Android file download [sanity]
+Viewport: mobile
+Covers: same-origin POST media proxy, buffered binary response, blob download, media response validation
+Description: Verifies the download action fetches a real media response and saves an MP4 rather than navigating to or saving the HTML app shell.
+Steps:
+1. Process a valid public TikTok URL
+2. Tap Download HD
+Expected: The browser downloads a non-empty .mp4 file; it does not open a page and does not save an .html file.
+
+## Test 5 - Mobile layout
+Viewport: mobile
+Description: Verifies the result cards fit cleanly on a narrow screen.
+Covers: responsive design
+Steps:
+1. Process a valid TikTok URL
+Expected: Input, result cards, and all three download actions fit without horizontal scrolling.
